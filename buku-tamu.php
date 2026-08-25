@@ -75,7 +75,7 @@ require_once('function.php');
                                 <td><?= $tamu['bertemu'] ?></td> 
                                 <td><?= $tamu['kepentingan'] ?></td> 
                                 <td>
-                                    <button class="btn btn-success" type="button">Ubah</button> 
+                                    <a class= "btn btn-success" href="edit-tamu.php?id=<?= $tamu['id_tamu'] ?>">Ubah</a>
                                     <button class="btn btn-danger" type="button">Hapus</button>
                                 </td> 
                             </tr> 
