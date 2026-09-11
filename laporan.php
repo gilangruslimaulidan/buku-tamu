@@ -1,4 +1,5 @@
 <?php
+require_once('function.php');
 include_once('templates/header.php');
 
 if (isset($_POST['tampilkan'])) {
@@ -12,10 +13,6 @@ if (isset($_POST['tampilkan'])) {
     // query ambil semua data buku tamu
     $buku_tamu = query("SELECT * FROM buku_tamu ORDER BY tanggal DESC");
 }
-?>
-<?php
-include_once('templates/header.php');
-require_once('function.php');
 ?>
 
 <!-- Begin Page Content -->
