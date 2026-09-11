@@ -1,9 +1,10 @@
-<?php 
+<?php
 // panggil file koneksi.php
 require_once('koneksi.php');
 
 // membuat query ke / dari database
-function query($query) {
+function query($query)
+{
     global $koneksi;
     $result = mysqli_query($koneksi, $query);
     $rows = [];
@@ -60,11 +61,61 @@ function ubah_tamu($data)
 }
 
 //function hapus data tamu
-function hapus_tamu($id) {
+function hapus_tamu($id)
+{
     global $koneksi;
 
     $query = "DELETE FROM buku_tamu WHERE id_tamu = '$id'";
     mysqli_query($koneksi, $query);
     return mysqli_affected_rows($koneksi);
+}
 
+function tambah_user($data)
+{
+    global $koneksi;
+
+    $kode       = htmlspecialchars($data["id_user"]);
+    $username   = htmlspecialchars($data["username"]);
+    $password   = htmlspecialchars($data["password"]);
+    $user_role  = htmlspecialchars($data["user_role"]);
+
+    // Enkripsi password dengan password_hash
+    $password_hash = password_hash($password, PASSWORD_DEFAULT);
+
+    $query = "INSERT INTO users VALUES ('$kode','$username','$password_hash','$user_role')";
+
+    mysqli_query($koneksi, $query);
+
+    return mysqli_affected_rows($koneksi);
+}
+
+// function ubah data tamu
+function ubah_user($data)
+{
+    global $koneksi;
+
+    $kode      = htmlspecialchars($data["id_user"]);
+    $username  = htmlspecialchars($data["username"]);
+    $user_role = htmlspecialchars($data["user_role"]);
+
+    $query = "UPDATE users SET
+                username   = '$username',
+                user_role  = '$user_role'
+              WHERE id_user = '$kode'";
+
+    mysqli_query($koneksi, $query);
+
+    return mysqli_affected_rows($koneksi);
+}
+
+// function hapus data user
+function hapus_user($id)
+{
+    global $koneksi;
+
+    $query = "DELETE FROM users WHERE id_user = '$id'";
+
+    mysqli_query($koneksi, $query);
+
+    return mysqli_affected_rows($koneksi);
 }
