@@ -1,0 +1,17 @@
+{
+    "name": "sriwulansari/buku-tamu",
+    "autoload": {
+        "psr-4": {
+            "Sriwulansari\\BukuTamu\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Gilang Rusli Maulidan",
+            "email": "gmaulidan0878@gmail.com"
+        }
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "^5.9"
+    }
+}
