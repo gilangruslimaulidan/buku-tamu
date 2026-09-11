@@ -1,3 +1,10 @@
+<?php
+// memulai session
+session_start();
+if (isset($_SESSION['login'])) {
+    header('Location: login.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,16 +19,16 @@
     <title>SB Admin 2 - Blank</title>
 
     <!-- Custom fonts for this template-->
-<link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-<link
-    href="https://fonts.googleapis.com/css?family=Nunito:200,2
-    rel="stylesheet">
+    <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,2
+    rel=" stylesheet">
 
-<!-- Custom styles for this template-->
-<link href="assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="assets/css/sb-admin-2.min.css" rel="stylesheet">
 
-<!-- Custom styles for this page -->
-<link href="assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <!-- Custom styles for this page -->
+    <link href="assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -45,31 +52,44 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-<li class="nav-item">
-    <a class="nav-link" href="index.php">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Dashboard</span></a>
-</li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
 
-<li class="nav-item">
-    <a class="nav-link" href="buku-tamu.php">
-        <i class="fas fa-fw fa-book-open"></i>
-        <span>Buku Tamu</span></a>
-</li>
+            <li class="nav-item">
+                <a class="nav-link" href="buku-tamu.php">
+                    <i class="fas fa-fw fa-book-open"></i>
+                    <span>Buku Tamu</span></a>
+            </li>
 
-<li class="nav-item">
-    <a class="nav-link" href="laporan.php">
-        <i class="fas fa-fw fa-file-alt"></i>
-        <span>Laporan</span></a>
-</li>
+            <li class="nav-item">
+                <a class="nav-link" href="laporan.php">
+                    <i class="fas fa-fw fa-file-alt"></i>
+                    <span>Laporan</span></a>
+            </li>
 
-<li class="nav-item">
-    <a class="nav-link" href="user.php">
-        <i class="fas fa-fw fa-users"></i>
-        <span>User</span></a>
-</li>
+            <li class="nav-item">
+                <a class="nav-link" href="user.php">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>User</span></a>
+            </li>
 
             <!-- Divider -->
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <?php
+            // cek apabila ada user login maka tampilkan logout
+            if (isset($_SESSION['login'])) :
+            ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="logout.php">
+                        <i class="fas fa-fw fa-power-off"></i>
+                        <span>Logout</span></a>
+                </li>
+            <?php endif; ?>
             <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->
