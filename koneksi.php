@@ -1,7 +1,8 @@
 <?php
+
 define('HOST_NAME', 'localhost');
-define('USER_NAME', 'root');
-define('PASSWORD', '');
+define('DB_USER', 'root');
+define('DB_PASS', '');
 define('DB_NAME', 'app_bukutamu');
 
-$koneksi = mysqli_connect(HOST_NAME, USER_NAME, PASSWORD, DB_NAME);
+$koneksi = mysqli_connect(HOST_NAME, DB_USER, DB_PASS, DB_NAME);

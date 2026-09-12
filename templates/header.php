@@ -1,9 +1,14 @@
 <?php
+
 // memulai session
 session_start();
-if (isset($_SESSION['login'])) {
+
+// jika belum login, arahkan ke halaman login
+if (!isset($_SESSION['login'])) {
     header('Location: login.php');
+    exit;
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,7 +88,7 @@ if (isset($_SESSION['login'])) {
             ?>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="users.php">
+                    <a class="nav-link" href="user.php">
                         <i class="fas fa-fw fa-users"></i>
                         <span>User</span></a>
                 </li>

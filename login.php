@@ -1,9 +1,11 @@
 <?php
+session_start();
+
 if (isset($_SESSION['login'])) {
     header('Location: index.php');
+    exit;
 }
-?>
-<?php
+
 require 'koneksi.php';
 
 if (isset($_POST['login'])) {
@@ -12,13 +14,15 @@ if (isset($_POST['login'])) {
 
     $result = mysqli_query($koneksi, "SELECT * FROM users WHERE username = '$username'");
 
-    // cek apakah ada username
+    // cek apakah username ditemukan
     if (mysqli_num_rows($result) == 1) {
 
-        // cek apakah passwordnya benar
+        // ambil data user
         $row = mysqli_fetch_assoc($result);
 
+        // cek apakah password benar
         if (password_verify($password, $row['password'])) {
+
             // set session
             $_SESSION['login'] = true;
             $_SESSION['username'] = $username;
@@ -27,14 +31,10 @@ if (isset($_POST['login'])) {
             // login berhasil
             header("Location: index.php");
             exit;
-        } {
-
-            // login berhasil
-            header("Location: index.php");
-            exit;
         }
     }
 
+    // username atau password salah
     $error = true;
 }
 ?>
